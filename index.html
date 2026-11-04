@@ -236,8 +236,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
         <label>Your name<input id="n" name="name" autocomplete="name" required></label>
         <label>Your email<input id="e" name="email" type="email" autocomplete="email" required></label>
         <label>Message<textarea id="m" name="message" rows="5" required></textarea></label>
-        <button class="btn primary" id="send" type="submit">Send by SMS</button>
-        <p id="form-status" role="status" style="font-size:13px">Tapping the button opens your messaging app with the message ready to send.</p>
+        <button class="btn primary" id="send" type="submit">Send by text message</button>
+        <p id="form-status" role="status" style="font-size:13px">Tapping the button opens your Messages app so you can send the message.</p>
       </form>
     </div>
   </section>
@@ -293,9 +293,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
     var email=document.getElementById('e').value.trim();
     var message=document.getElementById('m').value.trim();
     var body='Portfolio message from '+name+'\nEmail: '+email+'\n\n'+message;
-    var separator=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';
-    window.location.href='sms:+256760322433'+separator+'body='+encodeURIComponent(body);
-    document.getElementById('form-status').textContent='Your SMS app has been opened. Review and tap Send to deliver the message.';
+    window.location.href='sms:+256760322433?body='+encodeURIComponent(body);
   });
   if('IntersectionObserver' in window){
     var sections=document.querySelectorAll('main section[id]');
