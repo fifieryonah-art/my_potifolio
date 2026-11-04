@@ -114,8 +114,9 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
 @keyframes revealItem{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes portraitFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
 @media (prefers-reduced-motion:reduce){.hero>*,.hero .photo,.hero .eyebrow,.hero h1,.hero .lead,.hero .btns,.reveal.in .stat,.reveal.in .card,.reveal.in .row,.reveal.in .soft span{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.card:hover,.btn:hover{transform:none}.card::after{display:none}html{scroll-behavior:auto}}
-@media (max-width:720px){.cgrid{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding-top:44px}.photo{width:100%;max-width:320px;aspect-ratio:1;object-fit:cover;object-position:50% 20%;border-radius:32% 68% 55% 45%/45% 40% 60% 55%;border:4px solid var(--card);box-shadow:0 12px 36px rgba(0,0,0,.18);justify-self:center}
+@media (max-width:720px){.cgrid{grid-template-columns:1fr;gap:20px}.hero{grid-template-columns:1fr;padding-top:44px}.photo{width:100%;max-width:320px;aspect-ratio:1;object-fit:cover;object-position:50% 20%;border-radius:32% 68% 55% 45%/45% 40% 60% 55%;border:4px solid var(--card);box-shadow:0 12px 36px rgba(0,0,0,.18);justify-self:center}
 .photo{max-width:200px;order:-1;justify-self:start}.row{grid-template-columns:1fr;gap:4px}}
+@media (max-width:720px){.cgrid>div:first-child{min-width:0}.cgrid a:not(.btn){overflow-wrap:anywhere}.cgrid .btns{display:grid;grid-template-columns:1fr 1fr}.cgrid .btns .btn:last-child{grid-column:1/-1}.cgrid #cf{padding:18px}.cgrid input,.cgrid textarea,.cgrid button{font-size:16px}.cgrid textarea{min-height:140px}.cgrid #send{width:100%}}
 </style>
 </head>
 <body>
@@ -231,13 +232,13 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
         <p><b>Location</b><br>Kampala, Uganda</p>
         <div class="btns"><a class="btn ghost" href="https://www.linkedin.com/in/najjuma-phionah" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="https://github.com/fifieryonah-art" target="_blank" rel="noopener">GitHub</a><a class="btn primary" href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
       </div>
-      <div class="card" id="cf">
-        <label>Your name<input id="n" autocomplete="name"></label>
-        <label>Your email<input id="e" type="email" autocomplete="email"></label>
-        <label>Message<textarea id="m" rows="5"></textarea></label>
-        <button class="btn primary" id="send" type="button">Send message</button>
-        <p style="font-size:13px">This opens your messaging app with the message filled in for Phionah.</p>
-      </div>
+      <form class="card" id="cf" name="contact">
+        <label>Your name<input id="n" name="name" autocomplete="name" required></label>
+        <label>Your email<input id="e" name="email" type="email" autocomplete="email" required></label>
+        <label>Message<textarea id="m" name="message" rows="5" required></textarea></label>
+        <button class="btn primary" id="send" type="submit">Send by SMS</button>
+        <p id="form-status" role="status" style="font-size:13px">Tapping the button opens your messaging app with the message ready to send.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -286,6 +287,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
     setTimeout(typeRole,350);
   }
   setTimeout(deleteRole,1300);
+  document.getElementById('cf').addEventListener('submit',function(event){
+    event.preventDefault();
+    var name=document.getElementById('n').value.trim();
+    var email=document.getElementById('e').value.trim();
+    var message=document.getElementById('m').value.trim();
+    var body='Portfolio message from '+name+'\nEmail: '+email+'\n\n'+message;
+    var separator=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';
+    window.location.href='sms:+256760322433'+separator+'body='+encodeURIComponent(body);
+    document.getElementById('form-status').textContent='Your SMS app has been opened. Review and tap Send to deliver the message.';
+  });
   if('IntersectionObserver' in window){
     var sections=document.querySelectorAll('main section[id]');
     var navObserver=new IntersectionObserver(function(entries){
@@ -297,11 +308,6 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
     },{rootMargin:'-25% 0px -65% 0px',threshold:0});
     sections.forEach(function(section){navObserver.observe(section)});
   }
-  document.getElementById('send').addEventListener('click',function(){
-    var n=document.getElementById('n').value,e=document.getElementById('e').value,m=document.getElementById('m').value;
-    var body=(m||'Hello Phionah')+'\n\nFrom: '+(n||'Portfolio visitor')+(e?' ('+e+')':'');
-    location.href='sms:+256760322433?body='+encodeURIComponent(body);
-  });
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
