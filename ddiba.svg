@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#efeaf8"/>
+  <rect x="38" y="30" width="564" height="300" rx="22" fill="#fff"/>
+  <rect x="38" y="30" width="564" height="58" rx="22" fill="#6750a4"/>
+  <rect x="38" y="72" width="564" height="16" fill="#6750a4"/>
+  <circle cx="76" cy="59" r="16" fill="#f6c453"/><text x="102" y="65" fill="#fff" font-family="sans-serif" font-size="18" font-weight="700">DDIBA</text>
+  <rect x="68" y="112" width="315" height="174" rx="16" fill="#f7f5fc"/>
+  <text x="92" y="143" fill="#6750a4" font-family="sans-serif" font-size="15" font-weight="700">Today’s lesson</text>
+  <rect x="92" y="163" width="267" height="12" rx="6" fill="#d9d3e9"/><rect x="92" y="187" width="238" height="12" rx="6" fill="#d9d3e9"/><rect x="92" y="211" width="267" height="12" rx="6" fill="#d9d3e9"/><rect x="92" y="235" width="190" height="12" rx="6" fill="#d9d3e9"/>
+  <rect x="405" y="112" width="165" height="174" rx="16" fill="#6750a4"/>
+  <circle cx="487" cy="170" r="34" fill="#fff" opacity=".95"/><path d="M476 170l8 9 15-18" fill="none" stroke="#6750a4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="432" y="230" fill="#fff" font-family="sans-serif" font-size="15" font-weight="700">Lesson complete</text>
+  <rect x="68" y="304" width="502" height="8" rx="4" fill="#e4dff0"/><rect x="68" y="304" width="337" height="8" rx="4" fill="#f6c453"/>
+</svg>

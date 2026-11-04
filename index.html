@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Phionah Najjuma · AI & Software Engineer</title>
+<meta name="description" content="Portfolio of Phionah Najjuma, an AI and software engineer in Kampala building practical Python, Django and Flask applications.">
+<meta property="og:title" content="Phionah Najjuma · AI & Software Engineer">
+<meta property="og:description" content="Python backend developer building AI-enabled apps for safety, business and inclusive learning.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6f0;--card:#fffdf9;--fg:#1e1b18;--muted:#6b645c;--line:#e6ddd0;
+  --accent:#b8431f;--accent-fg:#fff;--tag:#f1e7d8;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#16130f;--card:#1e1a15;--fg:#f3ece2;--muted:#a79d90;--line:#322b23;--accent:#ef8a5f;--accent-fg:#16130f;--tag:#2a231b;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#16130f;--card:#1e1a15;--fg:#f3ece2;--muted:#a79d90;--line:#322b23;--accent:#ef8a5f;--accent-fg:#16130f;--tag:#2a231b;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;line-height:1.15;margin:0}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:700;text-decoration:none}
+.links{display:flex;gap:18px;align-items:center;overflow-x:auto}
+.links a{font-size:14px;color:var(--muted);text-decoration:none;white-space:nowrap}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
+.links a:hover,.links a.active{color:var(--accent)}
+.links a:hover::after,.links a.active::after{transform:scaleX(1);transform-origin:left}
+#theme{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;width:36px;height:36px;cursor:pointer;font-size:16px;flex:none}
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center}
+.eyebrow{color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(40px,7vw,68px);margin:10px 0 16px;font-weight:700}
+.lead{font-size:18px;color:var(--muted);max-width:52ch}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--accent);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover{box-shadow:0 8px 20px rgba(184,67,31,.18)}
+.btn.primary{background:var(--accent);color:var(--accent-fg)}
+.btn.ghost{color:var(--accent)}
+.photo{width:100%;max-width:320px;aspect-ratio:1;object-fit:cover;object-position:50% 20%;border-radius:32% 68% 55% 45%/45% 40% 60% 55%;border:4px solid var(--card);box-shadow:0 12px 36px rgba(0,0,0,.18);justify-self:center;animation:portraitFloat 6s ease-in-out 1s infinite}
+.avatar{aspect-ratio:1;border-radius:32% 68% 55% 45%/45% 40% 60% 55%;background:linear-gradient(135deg,var(--accent),#e8b04a);display:grid;place-items:center;font:700 clamp(56px,10vw,96px) Fraunces,Georgia,serif;color:#fff;max-width:300px;width:100%;justify-self:center}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,4vw,38px);margin-bottom:26px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font:700 26px Fraunces,Georgia,serif;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
+.card{position:relative;overflow:hidden}
+.project-image{width:calc(100% + 48px);height:190px;object-fit:cover;margin:-24px -24px 4px;border-bottom:1px solid var(--line);background:var(--tag)}
+.card::after{content:"";position:absolute;top:-55%;left:-75%;width:35%;height:210%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);transform:rotate(18deg);transition:left .65s ease;pointer-events:none}
+.card:hover::after{left:130%}
+.card h3{font-size:22px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .go{margin-top:auto;color:var(--accent);font-weight:600;text-decoration:none}
+.year{font-size:13px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{background:var(--tag);border-radius:999px;padding:3px 11px;font-size:12.5px}
+.skillgrid ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}.skillgrid li{margin:5px 0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.skills h3{font-size:17px;margin-bottom:10px}
+.timeline{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.row .when{color:var(--muted);font-size:14px}
+.row b{display:block}
+.row span{color:var(--muted);font-size:14.5px}
+.soft{display:flex;flex-wrap:wrap;gap:10px}
+.soft span{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 16px;font-size:14.5px}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.cgrid p{margin:0 0 14px}.cgrid a:not(.btn){color:var(--accent)}
+label{display:grid;gap:6px;font-size:14px;font-weight:500}input,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+button.btn{cursor:pointer;font:inherit;font-weight:600}
+footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;color:var(--muted);font-size:14px}
+.hero > div:first-child{animation:heroEnter .85s cubic-bezier(.22,1,.36,1) both}
+.role-line{min-height:1.65em}
+.typed-role{display:inline-block;color:var(--accent);font-weight:600}
+.typed-role::after{content:"";display:inline-block;width:2px;height:1em;margin-left:4px;background:currentColor;vertical-align:-0.12em;animation:roleCursor .75s steps(1,end) infinite}
+.typed-role.typing-paused::after{animation:none;opacity:1}
+@keyframes roleCursor{0%,45%{opacity:1}46%,100%{opacity:0}}
+.hero .photo{animation:photoEnter .95s cubic-bezier(.22,1,.36,1) both,portraitFloat 6s ease-in-out 1s infinite}
+.hero h1{animation:fadeUp .7s .25s both}
+.hero .eyebrow{animation:fadeUp .6s .4s both}
+.hero .lead,.hero .btns{animation:fadeUp .7s .35s both}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.in .stat,.reveal.in .card,.reveal.in .row,.reveal.in .soft span{animation:revealItem .55s cubic-bezier(.22,1,.36,1) both}
+.reveal.in .stat:nth-child(2),.reveal.in .card:nth-child(2),.reveal.in .row:nth-child(2),.reveal.in .soft span:nth-child(n+2){animation-delay:.08s}
+.reveal.in .stat:nth-child(3),.reveal.in .card:nth-child(3),.reveal.in .row:nth-child(3),.reveal.in .soft span:nth-child(n+4){animation-delay:.16s}
+.reveal.in .stat:nth-child(4),.reveal.in .card:nth-child(4),.reveal.in .row:nth-child(4),.reveal.in .soft span:nth-child(n+6){animation-delay:.24s}
+.reveal.in .card:nth-child(5){animation-delay:.32s}
+@keyframes heroEnter{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@keyframes photoEnter{from{opacity:0;transform:translateX(30px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes revealItem{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes portraitFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@media (prefers-reduced-motion:reduce){.hero>*,.hero .photo,.hero .eyebrow,.hero h1,.hero .lead,.hero .btns,.reveal.in .stat,.reveal.in .card,.reveal.in .row,.reveal.in .soft span{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.card:hover,.btn:hover{transform:none}.card::after{display:none}html{scroll-behavior:auto}}
+@media (max-width:720px){.cgrid{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding-top:44px}.photo{width:100%;max-width:320px;aspect-ratio:1;object-fit:cover;object-position:50% 20%;border-radius:32% 68% 55% 45%/45% 40% 60% 55%;border:4px solid var(--card);box-shadow:0 12px 36px rgba(0,0,0,.18);justify-self:center}
+.photo{max-width:200px;order:-1;justify-self:start}.row{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="logo" href="#top">Phionah N.</a>
+  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a><a href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
+  <button id="theme" aria-label="Toggle light and dark mode">◐</button>
+</nav></div></header>
+
+<main id="top" class="wrap">
+  <div class="hero">
+    <div>
+      <h3>Hi, I’m </h3>
+      <h1>Phionah Najjuma.</h1>
+      <div class="eyebrow role-line"> <span id="typed-role" class="typed-role" aria-live="polite">AI Engineer</span></div>
+      
+      <p class="lead">I build practical, AI-enabled Python applications that solve real problems, from digital safety and legal-rights guidance to business operations and inclusive learning.</p>
+      <div class="btns"><a class="btn primary" href="#projects">View my work</a><a class="btn ghost" href="#contact">Contact me</a><a class="btn ghost" href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
+    </div>
+    <img class="photo" alt="Portrait of Phionah Najjuma" src="photo.jpg">
+  </div>
+
+  <section id="about" class="reveal">
+    <h2>About me</h2>
+    <p class="lead">I’m an AI and software engineer based in Kampala, Uganda. I work with Python, Django and Flask to build, test and deploy applications, taking each project from problem definition through implementation, testing and deployment. I integrate third-party AI and communication APIs, write automated tests, and care about collaborative, continuously improving engineering.</p>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>projects built or contributed to</span></div>
+      <div class="stat"><b>1st place</b><span>Africa’s Talking hackathon</span></div>
+      <div class="stat"><b>6</b><span>languages supported in BRIDGE’s design</span></div>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <h2>Selected projects</h2>
+    <div class="grid">
+      <article class="card">
+        <img class="project-image" src="netsage.png" alt="NetSage network monitoring and incident response preview">
+        <span class="year">Live demo</span><h3>NetSage</h3>
+        <p><b>Network monitoring &amp; incident response platform.</b> Turns telemetry and alerts into actionable incidents. Built with Django REST Framework, React, PostgreSQL and Africa’s Talking SMS integrations.</p>
+        <div class="tags"><span>Django REST Framework</span><span>React</span><span>PostgreSQL</span><span>Monitoring</span><span>Africa’s Talking SMS</span></div>
+        <a class="go" href="https://netsage-a5hw.onrender.com/" target="_blank" rel="noopener">Live demo ↗</a>
+      </article>
+      <article class="card">
+        <img class="project-image" src="bridge.png" alt="BRIDGE digital safety assistant preview">
+        <span class="year">2026</span><h3>BRIDGE</h3>
+        <p><b>Digital Safety &amp; Legal Rights Assistant.</b> A multi-channel assistant offering digital-safety and legal-rights guidance over web, USSD, SMS and voice, designed for six languages. I integrated AI and communication services, built webhook workflows, bearer-token authentication, rate limiting and community-sourced scam-number screening, and wrote automated tests for channels, risk scoring and edge cases.</p>
+        <div class="tags"><span>Python</span><span>Flask</span><span>SQLite</span><span>Google Gemini</span><span>Sunbird AI</span><span>Africa’s Talking</span></div>
+        <a class="go" href="https://bridge-orib.onrender.com" target="_blank" rel="noopener">Visit live project →</a>
+      </article>
+      <article class="card">
+        <img class="project-image" src="nyondo.png" alt="NYONDO stock and sales management preview">
+        <span class="year">2026</span><h3>NYONDO</h3>
+        <p><b>Stock &amp; Sales Management System.</b> Independently designed, built and deployed a business app for inventory, sales, customers, suppliers, payments, expenses and reporting, with relational data models, role-based access for admins and staff, and stock and payment workflows.</p>
+        <div class="tags"><span>Python</span><span>Django</span><span>SQLite</span><span>Django ORM</span><span>Bootstrap</span></div>
+        <a class="go" href="https://nyondo-staock.onrender.com" target="_blank" rel="noopener">Visit live project →</a>
+      </article>
+      <article class="card">
+        <img class="project-image" src="ddiba-cropped.png" alt="DDIBA AI learning companion preview">
+        <span class="year">2026</span><h3>DDIBA</h3>
+        <p><b>AI Learning Companion.</b> Contributed to an AI-powered learning companion that makes learning more accessible for students with dyslexia and other reading or learning differences, adapting material and its presentation to support reading, understanding and practice.</p>
+        <div class="tags"><span>AI-enabled learning</span><span>Accessibility</span></div>
+        <a class="go" href="https://ddiba.onrender.com" target="_blank" rel="noopener">Visit live project →</a>
+      </article>
+      <article class="card">
+        <img class="project-image" src="bagga.png" alt="Bagga event management platform preview">
+        <span class="year">Hackathon</span><h3>Bagga</h3>
+        <p>Collaborated on a platform connecting organisers and participants, including feedback collection. Contributed to a USSD-based approach so people without smartphones could take part. <b>The team won first place</b> at an Africa’s Talking hackathon.</p>
+        <div class="tags"><span>Africa’s Talking</span><span>USSD</span><span>SMS</span></div>
+        <a class="go" href="https://bagga.onrender.com" target="_blank" rel="noopener">Visit live project →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <h2>Skills &amp; what I can do</h2>
+    <div class="grid skillgrid"><div class="card"><h3>Backend &amp; APIs</h3><div class="year">Django · Flask · REST · Webhooks</div><ul><li>Build REST APIs and server-side apps in Django and Flask</li><li>Design webhook workflows, authentication and rate limiting</li><li>Model data and write CRUD logic with the Django ORM</li></ul></div><div class="card"><h3>AI &amp; Integrations</h3><div class="year">Gemini · Sunbird AI · Africa’s Talking</div><ul><li>Add AI features with the Google Gemini API and Sunbird AI</li><li>Write prompts and design AI-enabled workflows</li><li>Connect SMS, USSD and voice with Africa’s Talking</li></ul></div><div class="card"><h3>Frontend</h3><div class="year">HTML · CSS · Bootstrap · Tailwind · React</div><ul><li>Build responsive, clean interfaces</li><li>Style quickly with Bootstrap and Tailwind CSS</li><li>Connect React front ends to APIs</li></ul></div><div class="card"><h3>Databases</h3><div class="year">SQL · SQLite · PostgreSQL</div><ul><li>Design relational data models</li><li>Run and debug database migrations</li><li>Fix query and model-relationship issues</li></ul></div><div class="card"><h3>Testing &amp; Quality</h3><div class="year">Unit · Integration · Debugging</div><ul><li>Write unit and integration tests, including edge cases</li><li>Find root causes and debug efficiently</li><li>Validate inputs so apps handle bad data safely</li></ul></div><div class="card"><h3>Tools &amp; Delivery</h3><div class="year">Git · GitHub · Linux · Render</div><ul><li>Version code and collaborate with Git and GitHub</li><li>Work comfortably in Linux and VS Code</li><li>Deploy apps to Render and write clear documentation</li></ul></div></div>
+    <h3 style="margin:34px 0 14px;font-size:20px">Interpersonal skills</h3>
+    <div class="soft"><span>Communication</span><span>Collaboration</span><span>Problem-solving</span><span>Adaptability</span><span>Independent learning</span><span>Attention to detail</span></div>
+  </section>
+
+  <section id="education" class="reveal">
+    <h2>Education &amp; certifications</h2>
+    <div class="timeline">
+      <div class="row"><div class="when">In progress</div><dihttps://bagga.onrender.comv><b>Certificate in AI and Software Engineering (Python)</b><span>Turing College Academy</span></div></div>
+      <div class="row"><div class="when">March 2026</div><div><b>Certificate in Software Engineering</b><span>Refactory Academy · 240 hours of project-based training</span></div></div>
+      <div class="row"><div class="when">2023</div><div><b>Uganda Advanced Certificate of Education (UACE)</b><span>Tropical High School, Kampala</span></div></div>
+      <div class="row"><div class="when">2020</div><div><b>Uganda Certificate of Education (UCE)</b><span>Tropical High School, Kampala</span></div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>Contact me</h2>
+    <div class="cgrid">
+      <div>
+        <p class="lead" style="margin-top:0">I’m open to software engineering, AI and Python backend opportunities. Send a message and I’ll reply as soon as I can.</p>
+        <p><b>Email</b><br><a href="mailto:fifieryonah@gmail.com">fifieryonah@gmail.com</a></p>
+        <p><b>Phone</b><br><a href="tel:+256760322433">+256 760 322 433</a> · <a href="tel:+256758736618">+256 758 736 618</a></p>
+        <p><b>Location</b><br>Kampala, Uganda</p>
+        <div class="btns"><a class="btn ghost" href="https://www.linkedin.com/in/najjuma-phionah" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="https://github.com/fifieryonah-art" target="_blank" rel="noopener">GitHub</a><a class="btn primary" href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
+      </div>
+      <div class="card" id="cf">
+        <label>Your name<input id="n" autocomplete="name"></label>
+        <label>Your email<input id="e" type="email" autocomplete="email"></label>
+        <label>Message<textarea id="m" rows="5"></textarea></label>
+        <button class="btn primary" id="send" type="button">Send message</button>
+        <p style="font-size:13px">This opens your messaging app with the message filled in for Phionah.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Phionah Najjuma · AI &amp; Software Engineering</div></footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+  });
+  var navLinks=document.querySelectorAll('.links a[href^="#"]');
+  var role=document.getElementById('typed-role');
+  var roles=['AI Engineer','Software Engineer','Python Backend Developer'];
+  var roleIndex=0,letterIndex=roles[0].length;
+  function typeRole(){
+    if(!role)return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      role.textContent=roles[roleIndex];
+      role.classList.add('typing-paused');
+      return;
+    }
+    var current=roles[roleIndex];
+    if(letterIndex<current.length){
+      role.textContent=current.slice(0,++letterIndex);
+      setTimeout(typeRole,70);
+      return;
+    }
+    roleIndex=(roleIndex+1)%roles.length;
+    letterIndex=0;
+    setTimeout(deleteRole,1300);
+  }
+  function deleteRole(){
+    var current=roles[(roleIndex-1+roles.length)%roles.length];
+    if(role.textContent.length){
+      role.textContent=role.textContent.slice(0,-1);
+      setTimeout(deleteRole,35);
+      return;
+    }
+    role.textContent='';
+    setTimeout(typeRole,350);
+  }
+  setTimeout(deleteRole,1300);
+  if('IntersectionObserver' in window){
+    var sections=document.querySelectorAll('main section[id]');
+    var navObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          navLinks.forEach(function(link){link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id)});
+        }
+      });
+    },{rootMargin:'-25% 0px -65% 0px',threshold:0});
+    sections.forEach(function(section){navObserver.observe(section)});
+  }
+  document.getElementById('send').addEventListener('click',function(){
+    var n=document.getElementById('n').value,e=document.getElementById('e').value,m=document.getElementById('m').value;
+    var body=(m||'Hello Phionah')+'\n\nFrom: '+(n||'Portfolio visitor')+(e?' ('+e+')':'');
+    location.href='sms:+256760322433?body='+encodeURIComponent(body);
+  });
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+})();
+</script>
+</body>
+</html>
