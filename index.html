@@ -77,6 +77,13 @@ h2{font-size:clamp(28px,4vw,38px);margin-bottom:26px}
 .row{display:grid;grid-template-columns:140px 1fr;gap:18px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
 .row .when{color:var(--muted);font-size:14px}
 .row b{display:block}
+.recognition-list{position:relative;display:grid;gap:26px;margin-left:8px;padding-left:22px}
+.recognition-list::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--accent)}
+.recognition-item{position:relative}
+.recognition-item::before{content:"";position:absolute;left:-27px;top:7px;width:9px;height:9px;border-radius:50%;background:#00a8c6;border:2px solid var(--card)}
+.recognition-item b{display:block;font-size:16px}
+.recognition-item span{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.recognition-item time{display:block;color:var(--muted);font-size:13px;margin-top:5px}
 .row span{color:var(--muted);font-size:14.5px}
 .soft{display:flex;flex-wrap:wrap;gap:10px}
 .soft span{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 16px;font-size:14.5px}
@@ -114,7 +121,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
 <body>
 <header><div class="wrap"><nav>
   <a class="logo" href="#top">Phionah N.</a>
-  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a><a href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
+  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#recognition">Recognition</a><a href="#contact">Contact</a><a href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
   <button id="theme" aria-label="Toggle light and dark mode">◐</button>
 </nav></div></header>
 
@@ -192,10 +199,25 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
   <section id="education" class="reveal">
     <h2>Education &amp; certifications</h2>
     <div class="timeline">
-      <div class="row"><div class="when">In progress</div><dihttps://bagga.onrender.comv><b>Certificate in AI and Software Engineering (Python)</b><span>Turing College Academy</span></div></div>
+      <div class="row"><div class="when">In progress</div><div><b>Zhuwa Training Program</b><span>Current training program</span></div></div>
+      <div class="row"><div class="when">In progress</div><div><b>Certificate in AI and Software Engineering (Python)</b><span>Turing College Academy</span></div></div>
       <div class="row"><div class="when">March 2026</div><div><b>Certificate in Software Engineering</b><span>Refactory Academy · 240 hours of project-based training</span></div></div>
-      <div class="row"><div class="when">2023</div><div><b>Uganda Advanced Certificate of Education (UACE)</b><span>Tropical High School, Kampala</span></div></div>
-      <div class="row"><div class="when">2020</div><div><b>Uganda Certificate of Education (UCE)</b><span>Tropical High School, Kampala</span></div></div>
+    </div>
+  </section>
+
+  <section id="recognition" class="reveal">
+    <h2>🏆 Recognition</h2>
+    <div class="recognition-list">
+      <div class="recognition-item">
+        <b>1st place, Event Management Hackathon</b>
+        <span>Africa's Talking Women in Tech, with Bagga</span>
+        <time datetime="2026-09">September 2026</time>
+      </div>
+      <div class="recognition-item">
+        <b>2nd runner-up, Legal and Policy Hackathon</b>
+        <span>Africa's Talking Women in Tech, with Bridge</span>
+        <time datetime="2026-08">August 2026</time>
+      </div>
     </div>
   </section>
 
