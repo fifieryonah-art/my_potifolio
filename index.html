@@ -87,8 +87,8 @@ h2{font-size:clamp(28px,4vw,38px);margin-bottom:26px}
 .row span{color:var(--muted);font-size:14.5px}
 .soft{display:flex;flex-wrap:wrap;gap:10px}
 .soft span{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 16px;font-size:14.5px}
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.cgrid p{margin:0 0 14px}.cgrid a:not(.btn){color:var(--accent)}
-label{display:grid;gap:6px;font-size:14px;font-weight:500}input,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}.cgrid>div,.cgrid form{min-width:0}.cgrid p{margin:0 0 14px}.cgrid a:not(.btn){color:var(--accent)}
+label{display:grid;gap:6px;font-size:14px;font-weight:500}.visually-hidden{display:none}input,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;min-width:0}textarea{resize:vertical}
 button.btn{cursor:pointer;font:inherit;font-weight:600}
 footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;color:var(--muted);font-size:14px}
 .hero > div:first-child{animation:heroEnter .85s cubic-bezier(.22,1,.36,1) both}
@@ -232,12 +232,15 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
         <p><b>Location</b><br>Kampala, Uganda</p>
         <div class="btns"><a class="btn ghost" href="https://www.linkedin.com/in/najjuma-phionah" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="https://github.com/fifieryonah-art" target="_blank" rel="noopener">GitHub</a><a class="btn primary" href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
       </div>
-      <form class="card" id="cf" name="contact">
+      <form class="card" id="cf" name="contact" method="POST" action="/?contact=sent#contact" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" value="New portfolio contact message">
+        <label class="visually-hidden" aria-hidden="true">Leave this field empty<input name="bot-field" tabindex="-1" autocomplete="off"></label>
         <label>Your name<input id="n" name="name" autocomplete="name" required></label>
         <label>Your email<input id="e" name="email" type="email" autocomplete="email" required></label>
         <label>Message<textarea id="m" name="message" rows="5" required></textarea></label>
-        <button class="btn primary" id="send" type="submit">Send by text message</button>
-        <p id="form-status" role="status" style="font-size:13px">Tapping the button opens your Messages app so you can send the message.</p>
+        <button class="btn primary" id="send" type="submit">Send message</button>
+        <p id="form-status" role="status" aria-live="polite" style="font-size:13px">Send a message using this form, or email <a href="mailto:fifieryonah@gmail.com">fifieryonah@gmail.com</a>.</p>
       </form>
     </div>
   </section>
@@ -287,13 +290,23 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
     setTimeout(typeRole,350);
   }
   setTimeout(deleteRole,1300);
-  document.getElementById('cf').addEventListener('submit',function(event){
+  var contactForm=document.getElementById('cf');
+  var formStatus=document.getElementById('form-status');
+  if(new URLSearchParams(window.location.search).get('contact')==='sent'){
+    formStatus.textContent='Thanks for your message. It has been sent successfully.';
+  }
+  contactForm.addEventListener('submit',function(event){
     event.preventDefault();
-    var name=document.getElementById('n').value.trim();
-    var email=document.getElementById('e').value.trim();
-    var message=document.getElementById('m').value.trim();
-    var body='Portfolio message from '+name+'\nEmail: '+email+'\n\n'+message;
-    window.location.href='sms:+256760322433?body='+encodeURIComponent(body);
+    if(!contactForm.reportValidity())return;
+    var submitButton=document.getElementById('send');
+    submitButton.disabled=true;
+    submitButton.textContent='Sending…';
+    formStatus.textContent='Sending your message…';
+    var body=new URLSearchParams(new FormData(contactForm));
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
+      .then(function(response){if(!response.ok)throw new Error('Submission failed');contactForm.reset();formStatus.textContent='Thanks for your message. It has been sent successfully.';})
+      .catch(function(){formStatus.textContent='Your message could not be sent just now. Please email fifieryonah@gmail.com instead.';})
+      .finally(function(){submitButton.disabled=false;submitButton.textContent='Send message';});
   });
   if('IntersectionObserver' in window){
     var sections=document.querySelectorAll('main section[id]');
