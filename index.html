@@ -232,15 +232,14 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
         <p><b>Location</b><br>Kampala, Uganda</p>
         <div class="btns"><a class="btn ghost" href="https://www.linkedin.com/in/najjuma-phionah" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="https://github.com/fifieryonah-art" target="_blank" rel="noopener">GitHub</a><a class="btn primary" href="https://docs.google.com/document/d/1quQhyo_Jr6KBBf3fbQH_sorqIAlMrWTy/edit?usp=drive_link&amp;ouid=115636307126591881094&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">CV</a></div>
       </div>
-      <form class="card" id="cf" name="contact" method="POST" action="/?contact=sent#contact" data-netlify="true" data-netlify-honeypot="bot-field">
+      <form class="card" id="cf" name="contact" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="subject" value="New portfolio contact message">
-        <label class="visually-hidden" aria-hidden="true">Leave this field empty<input name="bot-field" tabindex="-1" autocomplete="off"></label>
-        <label>Your name<input id="n" name="name" autocomplete="name" required></label>
-        <label>Your email<input id="e" name="email" type="email" autocomplete="email" required></label>
-        <label>Message<textarea id="m" name="message" rows="5" required></textarea></label>
+        <div class="visually-hidden" aria-hidden="true"><label>Leave this field empty<input name="bot-field" tabindex="-1" autocomplete="off"></label></div>
+        <label for="n">Your name</label><input id="n" name="name" autocomplete="name" required>
+        <label for="e">Your email</label><input id="e" name="email" type="email" autocomplete="email" required>
+        <label for="m">Message</label><textarea id="m" name="message" rows="5" required></textarea>
         <button class="btn primary" id="send" type="submit">Send message</button>
-        <p id="form-status" role="status" aria-live="polite" style="font-size:13px">Send a message using this form, or email <a href="mailto:fifieryonah@gmail.com">fifieryonah@gmail.com</a>.</p>
+        <p id="form-status" role="status" aria-live="polite" style="font-size:13px"></p>
       </form>
     </div>
   </section>
@@ -292,20 +291,35 @@ footer{border-top:1px solid var(--line);padding:24px 0 32px;text-align:center;co
   setTimeout(deleteRole,1300);
   var contactForm=document.getElementById('cf');
   var formStatus=document.getElementById('form-status');
-  if(new URLSearchParams(window.location.search).get('contact')==='sent'){
-    formStatus.textContent='Thanks for your message. It has been sent successfully.';
-  }
   contactForm.addEventListener('submit',function(event){
     event.preventDefault();
-    if(!contactForm.reportValidity())return;
+    formStatus.textContent='';
+    var nameField=document.getElementById('n');
+    var emailField=document.getElementById('e');
+    var messageField=document.getElementById('m');
+    if(!nameField.value.trim()){
+      formStatus.textContent='Please enter your name.';
+      nameField.focus();
+      return;
+    }
+    if(!emailField.value.trim()||!emailField.validity.valid){
+      formStatus.textContent='Please enter a valid email address.';
+      emailField.focus();
+      return;
+    }
+    if(!messageField.value.trim()){
+      formStatus.textContent='Please enter a message.';
+      messageField.focus();
+      return;
+    }
     var submitButton=document.getElementById('send');
     submitButton.disabled=true;
     submitButton.textContent='Sending…';
-    formStatus.textContent='Sending your message…';
+    formStatus.textContent='Sending…';
     var body=new URLSearchParams(new FormData(contactForm));
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
-      .then(function(response){if(!response.ok)throw new Error('Submission failed');contactForm.reset();formStatus.textContent='Thanks for your message. It has been sent successfully.';})
-      .catch(function(){formStatus.textContent='Your message could not be sent just now. Please email fifieryonah@gmail.com instead.';})
+      .then(function(response){if(!response.ok)throw new Error('Submission failed');contactForm.reset();formStatus.textContent='Thank you! Your message has been sent.';})
+      .catch(function(){formStatus.textContent='Something went wrong. Please email me at fifieryonah@gmail.com.';})
       .finally(function(){submitButton.disabled=false;submitButton.textContent='Send message';});
   });
   if('IntersectionObserver' in window){
